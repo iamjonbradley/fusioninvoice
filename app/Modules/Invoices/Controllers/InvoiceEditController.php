@@ -19,6 +19,7 @@ use FI\Modules\Invoices\Support\InvoiceTemplates;
 use FI\Modules\Invoices\Validators\InvoiceValidator;
 use FI\Modules\Payments\Repositories\PaymentRepository;
 use FI\Modules\TaxRates\Repositories\TaxRateRepository;
+use FI\Modules\Quotes\Repositories\QuoteRepository;
 use FI\Support\Statuses\InvoiceStatuses;
 use FI\Traits\ReturnUrl;
 use FI\Validators\ItemValidator;
@@ -42,6 +43,7 @@ class InvoiceEditController extends Controller
         InvoiceValidator $invoiceValidator,
         ItemValidator $itemValidator,
         PaymentRepository $paymentRepository,
+        QuoteRepository $quoteRepository,
         TaxRateRepository $taxRateRepository
     )
     {
@@ -51,6 +53,7 @@ class InvoiceEditController extends Controller
         $this->invoiceValidator      = $invoiceValidator;
         $this->itemValidator         = $itemValidator;
         $this->paymentRepository     = $paymentRepository;
+        $this->quoteRepository       = $quoteRepository;
         $this->taxRateRepository     = $taxRateRepository;
     }
 
@@ -60,6 +63,7 @@ class InvoiceEditController extends Controller
 
         return view('invoices.edit')
             ->with('invoice', $invoice)
+            ->with('quote', $this->quoteRepository->find($invoice->id))
             ->with('statuses', InvoiceStatuses::lists())
             ->with('currencies', $this->currencyRepository->lists())
             ->with('taxRates', $this->taxRateRepository->lists())

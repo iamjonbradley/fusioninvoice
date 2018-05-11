@@ -78,6 +78,7 @@ return [
     'category'                                => 'Category',
     'credential_type'                         => 'Type',
     'credential_details'                      => 'Details',
+    'credential_delete_warning'               => 'Are you sure you want to permanently delete this credential?',
     'cc'                                      => 'CC',
     'change'                                  => 'Change',
     'change_client'                           => 'Change Client',

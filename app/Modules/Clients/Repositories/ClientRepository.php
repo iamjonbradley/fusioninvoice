@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Hash;
 
 class ClientRepository extends BaseRepository
 {
+    public function lists()
+    {
+        return Client::orderBy('unique_name')->lists('unique_name', 'id')->all();
+    }
+
     public function paginate($status = null, $filter = null)
     {
         return Client::getQuery()

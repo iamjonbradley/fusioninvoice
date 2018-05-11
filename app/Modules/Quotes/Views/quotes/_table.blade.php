@@ -34,7 +34,7 @@
             <td class="hidden-sm hidden-xs">{{ $quote->summary }}</td>
             <td style="text-align: right; padding-right: 25px;">{{ $quote->amount->formatted_total }}</td>
             <td class="hidden-xs">
-                @if (count($quote->invoice))
+                @if ($quote->invoice)
                     <a href="{{ route('invoices.edit', [$quote->invoice_id]) }}">{{ trans('fi.yes') }}</a>
                 @else
                     {{ trans('fi.no') }}

@@ -15,6 +15,7 @@ use FI\Http\Controllers\Controller;
 use FI\Modules\Clients\Repositories\ClientRepository;
 use FI\Modules\Clients\Validators\ClientValidator;
 use FI\Modules\CustomFields\Repositories\ClientCustomRepository;
+use FI\Modules\Credentials\Repositories\CredentialRepository;
 use FI\Modules\CustomFields\Repositories\CustomFieldRepository;
 use FI\Modules\Payments\Repositories\PaymentRepository;
 use FI\Support\Frequency;
@@ -33,6 +34,7 @@ class ClientController extends Controller
     public function __construct(
         ClientRepository $clientRepository,
         ClientCustomRepository $clientCustomRepository,
+        CredentialRepository $credentialRepository,
         CustomFieldRepository $customFieldRepository,
         ClientValidator $clientValidator,
         PaymentRepository $paymentRepository
@@ -40,6 +42,7 @@ class ClientController extends Controller
     {
         $this->clientRepository       = $clientRepository;
         $this->clientCustomRepository = $clientCustomRepository;
+        $this->credentialRepository  = $credentialRepository;
         $this->customFieldRepository  = $customFieldRepository;
         $this->clientValidator        = $clientValidator;
         $this->paymentRepository      = $paymentRepository;
@@ -128,6 +131,7 @@ class ClientController extends Controller
             ->with('client', $client)
             ->with('invoices', $invoices)
             ->with('quotes', $quotes)
+            ->with('credential_types', $this->credentialRepository->types)
             ->with('payments', $this->paymentRepository->getByClientId($clientId))
             ->with('recurringInvoices', $recurringInvoices)
             ->with('customFields', $this->customFieldRepository->getByTable('clients'))

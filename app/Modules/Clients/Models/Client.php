@@ -123,6 +123,11 @@ class Client extends Model
         return $this->morphMany('FI\Modules\Attachments\Models\Attachment', 'attachable');
     }
 
+    public function credentials()
+    {
+        return $this->hasOne('FI\Modules\Credentials\Models\Credential');
+    }
+
     public function currency()
     {
         return $this->belongsTo('FI\Modules\Currencies\Models\Currency', 'currency_code', 'code');

@@ -14,6 +14,7 @@ namespace FI\Modules\Quotes\Controllers;
 use FI\Http\Controllers\Controller;
 use FI\Modules\Currencies\Repositories\CurrencyRepository;
 use FI\Modules\CustomFields\Repositories\CustomFieldRepository;
+use FI\Modules\Invoices\Repositories\InvoiceRepository;
 use FI\Modules\Quotes\Repositories\QuoteRepository;
 use FI\Modules\Quotes\Support\QuoteTemplates;
 use FI\Modules\Quotes\Validators\QuoteValidator;
@@ -37,6 +38,7 @@ class QuoteEditController extends Controller
         CurrencyRepository $currencyRepository,
         CustomFieldRepository $customFieldRepository,
         ItemValidator $itemValidator,
+        InvoiceRepository $invoiceRepository,
         QuoteRepository $quoteRepository,
         QuoteValidator $quoteValidator,
         TaxRateRepository $taxRateRepository
@@ -46,6 +48,7 @@ class QuoteEditController extends Controller
         $this->customFieldRepository = $customFieldRepository;
         $this->itemValidator         = $itemValidator;
         $this->quoteRepository       = $quoteRepository;
+        $this->invoiceRepository     = $invoiceRepository;
         $this->quoteValidator        = $quoteValidator;
         $this->taxRateRepository     = $taxRateRepository;
     }
@@ -56,6 +59,7 @@ class QuoteEditController extends Controller
 
         return view('quotes.edit')
             ->with('quote', $quote)
+            ->with('invoice', $this->invoiceRepository->find($quote->id))
             ->with('statuses', QuoteStatuses::lists())
             ->with('currencies', $this->currencyRepository->lists())
             ->with('taxRates', $this->taxRateRepository->lists())

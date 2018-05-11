@@ -85,6 +85,11 @@
                         <i class="fa fa-bank"></i> <span>{{ trans('fi.expenses') }}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('credentials.index') }}">
+                        <i class="fa fa-bank"></i> <span>{{ trans('fi.credentials') }}</span>
+                    </a>
+                </li>
 
                 <li class="treeview">
                     <a href="#">

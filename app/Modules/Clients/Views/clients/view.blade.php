@@ -32,6 +32,7 @@
                         <li><a data-toggle="tab" href="#tab-payments">{{ trans('fi.payments') }}</a></li>
                         <li><a data-toggle="tab" href="#tab-attachments">{{ trans('fi.attachments') }}</a></li>
                         <li><a data-toggle="tab" href="#tab-notes">{{ trans('fi.notes') }}</a></li>
+                        <li><a data-toggle="tab" href="#tab-credentials">{{ trans('fi.credentials') }}</a></li>
                     </ul>
                     <div class="tab-content">
 
@@ -134,6 +135,10 @@
 
                         <div id="tab-notes" class="tab-pane">
                             @include('notes._notes', ['object' => $client, 'model' => 'FI\Modules\Clients\Models\Client', 'hideHeader' => true])
+                        </div>
+
+                        <div id="tab-credentials" class="tab-pane">
+                            @include('credentials._credentials', ['object' => $client, 'model' => 'FI\Modules\Credentials\Models\Credential', 'hideHeader' => true])
                         </div>
 
                     </div>

@@ -9,7 +9,7 @@
         <span style="margin-left: 10px;" class="label label-default">{{ trans('fi.not_viewed') }}</span>
     @endif
 
-    @if (count($quote->invoice))
+    @if ($quote->invoice)
         <span class="label label-info"><a href="{{ route('invoices.edit', [$quote->invoice_id]) }}" style="color: inherit;">{{ trans('fi.converted_to_invoice') }} {{ $quote->invoice->number }}</a></span>
     @endif
 
