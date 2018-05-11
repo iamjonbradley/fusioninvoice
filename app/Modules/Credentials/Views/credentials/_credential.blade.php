@@ -1,4 +1,13 @@
-
+<?php
+/**
+ * This file is an addon to FusionInvoice by Amber Orchard.
+ *
+ * (c) Amber Orchard, LLC <jonathan@amberorchard.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+?>
         <tr id="row-credential-{{ $credential->id }}">
             <td>{{ $credential->credential_type }}</td>
             <td>{{ $credential->name }}</td>

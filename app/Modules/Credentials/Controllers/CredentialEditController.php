@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This file is part of FusionInvoice.
+ * This file is an addon to FusionInvoice by Amber Orchard.
  *
- * (c) FusionInvoice, LLC <jessedterry@gmail.com>
+ * (c) Amber Orchard, LLC <jonathan@amberorchard.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
